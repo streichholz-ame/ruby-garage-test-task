@@ -28,7 +28,7 @@ class ToDoList {
         deleteListBtn.click(this.deleteList.bind(this));
         editListBtn.click(this.editListHeading.bind(currentListTemplate));
 
-        $(listHeading).focusout(function(e) {
+        $(listHeading).onchange(function() {
                 that.sendListUpdateRequest(that.getListId(currentListTemplate), listHeading.val(), currentListTemplate);
                 listHeading.attr("readonly", true);
                 taskDeadlineField.attr("disabled", true);
@@ -192,7 +192,7 @@ class ToDoList {
                 deadline.attr("disabled", true);
               });
             
-            $(currentTaskTemplate).focusout(function() {
+            $(currentTaskTemplate).onchange(function() {
                     that.sendTaskUpdateRequest(that.getTaskId(currentTaskTemplate), taskName.val(), taskCheckbox.prop("checked"), deadline.val(), currentTaskTemplate);
                     taskName.attr("readonly", true);
                     deadline.attr("disabled", true);
